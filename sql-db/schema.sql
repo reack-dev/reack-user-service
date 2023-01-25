@@ -1,9 +1,9 @@
 CREATE TABLE url (
   id serial PRIMARY KEY,
   random_url_string text,
-  ts timestamp DEFAULT NOW(),
+  ts timestamp DEFAULT NOW()
   /*username text REFERENCES user(username) ON DELETE CASCADE*/
-)
+);
 
 CREATE TABLE request (
   id serial PRIMARY KEY,
@@ -12,10 +12,10 @@ CREATE TABLE request (
   method text,
   path text,
   host text, 
-  ts timestamps DEFAULT NOW()
-)
+  ts timestamp DEFAULT NOW()
+);
 
-/*CREATE TABLE user {
-  username text PRIMARY KEY,
-  password text NOT NULL
-}*/
+-- CREATE TABLE user {
+  -- username text PRIMARY KEY,
+  -- password text NOT NULL
+-- };
