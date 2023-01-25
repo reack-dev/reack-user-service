@@ -1,0 +1,31 @@
+{
+  "name": "reack-user-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reack-dev/reack-user-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reack-dev/reack-user-service/issues"
+  },
+  "homepage": "https://github.com/reack-dev/reack-user-service#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "connect-loki": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.8.4",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0"
+  }
+}
