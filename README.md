@@ -1,3 +1,1 @@
 # reack-user-service
-
-test
