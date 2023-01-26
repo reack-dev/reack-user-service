@@ -8,7 +8,7 @@ const Sockets = {};
 // When a client establishes a connection with WebSocket Server:
 WSServer.on('connection', (socket, request) => {
   const url = request.headers.host; // define unique client identifier here
-  Sockets[url] = socket;
+  Sockets[url] = socket; // store the socket with UCI
   logger.info('WebSocket connected with URL: ' + url)
 
   // removes socket from Sockets collection when client disconnects
