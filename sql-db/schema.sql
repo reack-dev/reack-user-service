@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS url;
+DROP TABLE IF EXISTS request;
+
 CREATE TABLE url (
   id serial PRIMARY KEY,
   random_url_string text,
