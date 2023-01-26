@@ -10,7 +10,16 @@ function logQuery(statement, parameters) {
 }
 
 async function dbQuery(statement, ...parameters) {
-  let client = new Client({ database: config.SQL_DB_NAME });
+
+  const CONNECTION = {
+    password: 'max',
+    port: 5432,
+    user: 'max',
+    database: config.SQL_DB_NAME,
+    host: 'localhost',
+  };
+
+  let client = new Client(CONNECTION);
 
   await client.connect();
   logQuery(statement, parameters);
