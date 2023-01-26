@@ -1,12 +1,25 @@
 const userRouter = require('express').Router();
 
-const db = require('./persistence');
+const Persistence = require('./persistence');
+const db = new Persistence();
 
-const generateRandomString = require('../utils/generate-random-string');
+const funcHelpers = require('../utils/func-helpers');
 
 userRouter.get('/generateURL', async (req, res, next) => {
-  RANDOM_STRING_LENGTH = 10;
-  randomString = generateRandomString(RANDOM_STRING_LENGTH);
+  const RANDOM_STRING_LENGTH = 10;
+  const randomString = funcHelpers.generateRandomString(RANDOM_STRING_LENGTH);
 
-  storedNewURL = await db.insertNewURL(randomString);
+  const storedNewURL = await db.insertNewURL(randomString);
+
+  if (!storedNewURL) {
+    res.set({ 'Retry-After': 120 });
+    res
+      .status(503)
+      .json({ error: 'Could not generate new URL. Try again later.' });
+    return;
+  }
+
+  res.status(201).json({ randomString, requests: [] });
 });
+
+module.exports = userRouter;

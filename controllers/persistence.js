@@ -5,6 +5,9 @@ class Persistence {
   constructor() {}
 
   async insertNewURL(randomString) {
-    result = await dbQuery(SQL.INSERT_NEW_URL, randomString);
+    const result = await dbQuery(SQL.INSERT_NEW_URL, randomString);
+    return result.rowCount === 1;
   }
 }
+
+module.exports = Persistence;

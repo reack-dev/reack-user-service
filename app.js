@@ -8,16 +8,16 @@ const session = require('express-session');
 const LokiStore = store(session);
 
 const morgan = require('morgan');
-const mongoose = require('mongoose');
 
 const config = require('./utils/config');
-const logger = require('./utils/logger');
 const middleware = require('./utils/middleware');
+const userRouter = require('./controllers/user');
+const newRequestRouter = require('./controllers/new-request');
 
 const app = express();
 
 app.use(cors());
-app.use(express.static());
+app.use(express.static('build'));
 app.use(express.json());
 app.use(morgan('common'));
 
@@ -33,14 +33,15 @@ app.use(
     name: 'requestBin-session-id',
     resave: false,
     saveUninitialized: true,
-    secret: config.secret,
+    secret: config.SECRET,
     store: new LokiStore({}),
   })
 );
 
 // Routes go here
+app.use(userRouter);
+app.use(newRequestRouter);
 
-// Maybe another middleware to handle unkownEndpoints
 app.use(middleware.unkownEndpoints);
 app.use(middleware.errorHandler);
 

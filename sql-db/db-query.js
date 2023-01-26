@@ -6,7 +6,7 @@ const logger = require('../utils/logger');
 function logQuery(statement, parameters) {
   let timeStamp = new Date();
   let formattedTimeStamp = timeStamp.toString().substring(4, 24);
-  logger(formattedTimeStamp, statement, parameters);
+  logger.info(formattedTimeStamp, statement, parameters);
 }
 
 async function dbQuery(statement, ...parameters) {
