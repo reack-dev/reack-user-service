@@ -7,14 +7,17 @@ const Sockets = {};
 
 // When a client establishes a connection with WebSocket Server:
 WSServer.on('connection', (socket, request) => {
-  const url = request.headers.host; // define unique client identifier here
-  Sockets[url] = socket; // store the socket with UCI
-  logger.info('WebSocket connected with URL: ' + url)
-
+  // const url = request.headers.host; // define unique client identifier here
+  // Sockets[url] = socket; // store the socket with UCI
+  logger.info('WebSocket connected')
+  socket.on('message', (msg) => {
+    const randomString = msg.toString();
+    Sockets[randomString] = socket;
+  })
   // removes socket from Sockets collection when client disconnects
   socket.on('close', () => {
-    delete Sockets[url];
-    logger.info('WebSocket client disconnected, delete ' + url);
+    // delete Sockets[url];
+    // logger.info('WebSocket client disconnected, delete ' + url);
   })
 });
 
