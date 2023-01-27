@@ -1,6 +1,5 @@
 function generateRandomString(length) {
-  possibleCharacters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  possibleCharacters = 'abcdefghijklmnopqrstuvwxyz0123456789';
   nbOfChoices = possibleCharacters.length;
 
   result = '';
