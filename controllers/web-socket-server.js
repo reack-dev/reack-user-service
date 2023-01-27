@@ -9,9 +9,8 @@ function initiateWebSocketServer(server) {
   wss.on('connection', (ws) => {
     const id = uuidv4();
     const client = new Client(id, ws);
-    ws.send('Test');
+
     ws.on('message', (message) => {
-      console.log(message);
       const msg = JSON.parse(message);
       client.processMsg(msg);
     });
