@@ -11,6 +11,7 @@ function initiateWebSocketServer(server) {
     const client = new Client(id, ws);
 
     ws.on('message', (message) => {
+      console.log(message);
       const msg = JSON.parse(message);
       client.processMsg(msg);
     });
