@@ -10,7 +10,7 @@ function initiateWebSocketServer(server) {
     const id = uuidv4();
     const client = new Client(id, ws);
 
-    ws.on('message', async (message) => {
+    ws.on('message', (message) => {
       const msg = JSON.parse(message);
       client.processMsg(msg);
     });
